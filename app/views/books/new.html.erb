@@ -1,5 +1,7 @@
 <h2>Add book</h2>
   <%= form_for @book do |f| %>
+    <%= render 'common/errors', model: @book %>
+    
     <p>
       <%= f.label :title %>
       <%= f.text_field :title %>
