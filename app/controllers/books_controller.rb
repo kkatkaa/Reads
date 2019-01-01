@@ -1,4 +1,14 @@
 class BooksController < ApplicationController
   def index
-  end 
+    @books = Book.all.order("created_at desc")
+  end
+
+  def new
+    @book = Book.new
+  end
+
+  def create
+    @book = Book.create!(params[:book].permit(:title, :description, :pages, :date, :isbn, :language))
+    redirect_to action: "index"
+  end
 end

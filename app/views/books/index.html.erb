@@ -1,3 +1,14 @@
 <h1> GreatReads </h1>
-<hr />
-<h2> Meet your favorite book...</h2>
+  <hr />
+
+  <h2> Meet your favorite book...</h2>
+
+  <h2> Choose book </h2>
+    <% @books.each do |book| %>
+      <h3><%= book.title %></h3>
+        <p><%= book.description %></p>
+        <p><%= book.pages %></p>
+        <p><%= book.date %></p>
+        <p><%= book.isbn %></p>
+        <p><%= book.language %></p>
+      <% end %>
