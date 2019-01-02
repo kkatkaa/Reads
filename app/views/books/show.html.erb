@@ -5,3 +5,5 @@
       <p>Published: <%= @book.date %></p>
       <p>ISBN: <%= @book.isbn %></p>
       <p>Edition language: <%= @book.language %></p>
+
+<td><%= link_to 'Edit this book', edit_book_path(@book) %></td>
