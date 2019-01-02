@@ -5,6 +5,7 @@
     <%= f.label :title %>
     <%= f.text_field :title %>
   </p>
+   <%= f.collection_check_boxes :author_ids, Author.all, :id, :name %>
   <p>
     <%= f.label :description %>
     <%= f.text_area :description %>
