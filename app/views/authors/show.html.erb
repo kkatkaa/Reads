@@ -3,6 +3,13 @@
     <hr />
       <p>Born <%= @author.born %></p>
       <p><%= @author.description %></p>
+    <hr />
+      <p>
+        <strong><%= @author.name %>'s books</strong></br>
+          <% @author.books.each do |book| %>
+            <%= link_to book.title, book_path(book) %>
+          <% end %>
+      </p>
 
 
   <p><%= link_to 'Edit data', edit_author_path(@author) %></p>
