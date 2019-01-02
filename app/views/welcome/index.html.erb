@@ -1,0 +1,14 @@
+<h1>GreatReads</h1>
+<hr />
+  <p>
+    <%= form_tag books_path, method: :get do %>
+      <%= text_field_tag :title, params[:title], class: "form-control" %>
+      <span class="input-group-btn">
+        <%= submit_tag "Search", name: nil, class: "btn btn-default" %>
+     </span>
+     <% end %>
+  </p>
+  <div>
+    <%= link_to 'Books', controller: "books" %>
+    <%= link_to 'Authors', controller: "authors" %>
+  </div>
