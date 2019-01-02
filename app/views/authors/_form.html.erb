@@ -1,7 +1,5 @@
-<%= render 'common/errors', model: @author %>
-
 <%= form_for @author do |f| %>
-
+  <%= render 'common/errors', model: @author %>
   <p>
     <%= f.label :name %>
     <%= f.text_field :name %>
