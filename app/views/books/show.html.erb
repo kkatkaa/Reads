@@ -14,5 +14,12 @@
       <p>ISBN: <%= @book.isbn %></p>
       <p>Edition language: <%= @book.language %></p>
 
+      <p>
+        <strong> Tags:</strong>
+        <% @book.tags.each do |t| %>
+          <%=link_to t, books_path(q: t), class: "badge badge-dark"%>
+        <% end %>
+</p>
+
   <p><%= link_to 'Edit this book', edit_book_path(@book) %></p>
   <p><%= link_to 'Remove this book', book_path(@book), method: :delete, data: { confirm: 'Are you sure?' } %></td>
