@@ -6,4 +6,6 @@ class Book < ApplicationRecord
   validates :isbn, presence: true, uniqueness: true
   validates :language, presence: true
 
+  has_many :book_authors
+  has_many :authors, through: :book_authors
 end
