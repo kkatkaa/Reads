@@ -1,4 +1,6 @@
 <h1> GreatReads </h1>
+  <p><%= link_to "Add book", "/books/new" %></p>
+
   <hr />
 
   <h2> Meet your favorite book...</h2>
@@ -8,5 +10,3 @@
         <%= link_to book.title, book_path(book) %>
       </h3>
     <% end %>
-
-<%= link_to "Add book", "/books/new" %>
