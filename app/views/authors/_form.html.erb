@@ -1,0 +1,22 @@
+<%= render 'common/errors', model: @author %>
+
+<%= form_for @author do |f| %>
+
+  <p>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :born %>
+    <%= f.text_field :born %>
+  </p>
+  <p>
+    <%= f.label :description %>
+    <%= f.text_area :description %>
+  </p>
+  <p>
+
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>

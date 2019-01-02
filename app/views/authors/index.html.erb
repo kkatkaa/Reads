@@ -1,0 +1,12 @@
+<h1> GreatReads </h1>
+  <p><%= link_to "Add author", "/authors/new" %></p>
+
+  <hr />
+
+  <h2> Meet your favorite author...</h2>
+
+    <% @authors.each do |author| %>
+      <h3>
+        <%= link_to author.name, author_path(author) %>
+      </h3>
+    <% end %>

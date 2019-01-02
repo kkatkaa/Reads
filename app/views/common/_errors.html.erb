@@ -1,10 +1,10 @@
-  <% if @book.errors.any? %>
+<% if model.errors.any? %>
     <div id="error_explanation">
       <h2>
-        <%= pluralize(@book.errors.count, "error") %> prohibited this book from being saved:
+        <%= pluralize(model.errors.count, 'error') %> prohibited this article from being save:  </h2>
       </h2>
       <ul>
-        <% @book.errors.full_messages.each do |msg| %>
+        <% model.errors.full_messages.each do |msg| %>
           <li><%= msg %></li>
         <% end %>
       </ul>

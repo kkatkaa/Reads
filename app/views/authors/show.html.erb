@@ -1,0 +1,9 @@
+<h2><i>GreatReads helps you keep track of books you want to read</i></h2>
+    <h3><%= @author.name %></h3>
+    <hr />
+      <p>Born <%= @author.born %></p>
+      <p><%= @author.description %></p>
+
+
+  <p><%= link_to 'Edit data', edit_author_path(@author) %></p>
+  <p><%= link_to 'Remove data', author_path(@author), method: :delete, data: { confirm: 'Are you sure?' } %></td>
