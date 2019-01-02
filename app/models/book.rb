@@ -8,4 +8,16 @@ class Book < ApplicationRecord
 
   has_many :authors_books
   has_many :authors, through: :authors_books
+
+  def tags=(value)
+     value = sanitize_tags(value) if value.is_a?(String)
+
+      super(value)
+   end
+
+    private
+
+    def sanitize_tags(text)
+     text.downcase.split.uniq
+   end
 end
