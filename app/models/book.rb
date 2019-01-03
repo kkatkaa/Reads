@@ -8,6 +8,7 @@ class Book < ApplicationRecord
 
   has_many :authors_books
   has_many :authors, through: :authors_books
+  belongs_to :user
 
   def tags=(value)
     value = sanitize_tags(value) if value.is_a?(String)
