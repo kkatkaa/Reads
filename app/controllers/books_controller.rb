@@ -1,4 +1,5 @@
 class BooksController < ApplicationController
+  before_action :find_book, only: [:show, :edit, :update, :destroy]
   # def index
   #   @books = Book.all.order("created_at desc")
   #   @books = @books.where("? = any(tags)", params[:q]) if params[:q].present?
@@ -12,7 +13,6 @@ class BooksController < ApplicationController
   end
 
   def show
-    @book = Book.find(params[:id])
   end
 
   def new
@@ -21,7 +21,6 @@ class BooksController < ApplicationController
   end
 
   def edit
-    @book = Book.find(params[:id])
     return unless authorize_book
   end
 
@@ -37,7 +36,6 @@ class BooksController < ApplicationController
   end
 
   def update
-    @book = Book.find(params[:id])
     return unless authorize_book
     if @book.update(book_params)
       flash[:notice] = "The book has been updated"
@@ -48,7 +46,7 @@ class BooksController < ApplicationController
   end
 
   def destroy
-    @book = Book.find(params[:id])
+    @book.destroy
     return unless authorize_book
       flash[:notice] = "The book has been deleted"
       redirect_to books_path
@@ -67,5 +65,9 @@ class BooksController < ApplicationController
 
   def book_params
     params[:book].permit(:title, :description, :pages, :date, :isbn, :language, :tags, :user, author_ids:[])
+  end
+
+  def find_book
+    @book = Book.find(params[:id])
   end
 end
