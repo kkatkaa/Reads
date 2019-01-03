@@ -22,17 +22,14 @@ class BooksController < ApplicationController
 
   def edit
     @book = Book.find(params[:id])
-    if current_user != @book.user && !current_user&.admin?
-      flash[:alert] = "You are not allowed to be here"
-      redirect_to books_path
-    end
+    return unless authorize_book
   end
 
   def create
     @book = Book.new(book_params)
     @book.user = current_user if current_user
     if @book.save
-      flash[:notice] = "You've successfuly add this book"
+      flash[:notice] = "The book has been added"
       redirect_to @book
     else
       render 'new'
@@ -41,8 +38,9 @@ class BooksController < ApplicationController
 
   def update
     @book = Book.find(params[:id])
-    if current_user != @book.user && !current_user&.admin?
-      flash[:notice] = "You've successfuly update this book"
+    return unless authorize_book
+    if @book.update(book_params)
+      flash[:notice] = "The book has been updated"
       redirect_to @book
     else
       render 'edit'
@@ -51,13 +49,21 @@ class BooksController < ApplicationController
 
   def destroy
     @book = Book.find(params[:id])
-    if current_user != @article.user && !current_user&.admin?
-      flash[:notice] = "You've delete the book"
+    return unless authorize_book
+      flash[:notice] = "The book has been deleted"
       redirect_to books_path
-    end
   end
 
   private
+  def authorize_book
+     if current_user != @book.user && !current_user&.admin?
+       flash[:alert] = "You are not allowed to be here"
+       redirect_to books_path
+       false
+     else
+       true
+     end
+   end
 
   def book_params
     params[:book].permit(:title, :description, :pages, :date, :isbn, :language, :tags, :user, author_ids:[])
