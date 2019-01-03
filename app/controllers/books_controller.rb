@@ -54,7 +54,7 @@ class BooksController < ApplicationController
 
   private
   def authorize_book
-    if current_user != !current_user&.admin?
+    if current_user != @book.user && !current_user&.admin?
       flash[:alert] = "You are not allowed to be here"
       redirect_to books_path
       false
