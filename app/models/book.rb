@@ -8,7 +8,7 @@ class Book < ApplicationRecord
 
   has_many :authors_books
   has_many :authors, through: :authors_books
-  has_many :comments 
+  has_many :comments, dependent: :destroy  
   belongs_to :user
 
   def tags=(value)
