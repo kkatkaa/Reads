@@ -22,10 +22,10 @@ class BooksController < ApplicationController
 
   def edit
     @book = Book.find(params[:id])
-    if current_user != @book.user
+    if current_user != @book.user && !current_user&.admin?
       flash[:alert] = "You are not allowed to be here"
       redirect_to books_path
-    end 
+    end
   end
 
   def create
@@ -41,7 +41,7 @@ class BooksController < ApplicationController
 
   def update
     @book = Book.find(params[:id])
-    if @book.update(book_params)
+    if current_user != @book.user && !current_user&.admin?
       flash[:notice] = "You've successfuly update this book"
       redirect_to @book
     else
@@ -51,9 +51,10 @@ class BooksController < ApplicationController
 
   def destroy
     @book = Book.find(params[:id])
-    @book.destroy
-    flash[:notice] = "You've delete the book"
-    redirect_to books_path
+    if current_user != @article.user && !current_user&.admin?
+      flash[:notice] = "You've delete the book"
+      redirect_to books_path
+    end
   end
 
   private
