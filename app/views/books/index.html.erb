@@ -1,12 +1,13 @@
 <h1> GreatReads </h1>
-  <p> <%= link_to "Add book", "/books/new" %> </p>
   <p>
-    <%= form_tag books_path, method: :get do %>
-      <%= text_field_tag :q, params[:q], class: "form-control" %>
-      <span class="input-group-btn">
-        <%= submit_tag "Search", class: "btn btn-default" %>
-     </span>
-     <% end %>
+    <%= link_to "Add book", "/books/new" %>
+  </p>
+
+  <p>Search by title:
+    <%= form_tag(books_path, method: :get) do %>
+      <%= text_field_tag :title, params[:title] %>
+        <%= submit_tag "Search", name: nil %>
+      <% end %>
   </p>
 
   <hr />

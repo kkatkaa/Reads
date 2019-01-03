@@ -10,14 +10,14 @@ class Book < ApplicationRecord
   has_many :authors, through: :authors_books
 
   def tags=(value)
-     value = sanitize_tags(value) if value.is_a?(String)
+    value = sanitize_tags(value) if value.is_a?(String)
 
-      super(value)
-   end
+    super(value)
+  end
 
-    private
+  private
 
-    def sanitize_tags(text)
-     text.downcase.split.uniq
-   end
+  def sanitize_tags(text)
+    text.downcase.split.uniq
+  end
 end

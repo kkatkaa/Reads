@@ -1,7 +1,14 @@
 class BooksController < ApplicationController
+  # def index
+  #   @books = Book.all.order("created_at desc")
+  #   @books = @books.where("? = any(tags)", params[:q]) if params[:q].present?
+  # end
   def index
-    @books = Book.all.order("created_at desc")
-    @books = @books.where("? = any(tags)", params[:q]) if params[:q].present?
+    if params[:title]
+       @books = Book.where('title LIKE ?', "%#{params[:title]}%")
+     else
+       @books = Book.all
+     end
   end
 
   def show
