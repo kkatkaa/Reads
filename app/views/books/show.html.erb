@@ -22,5 +22,11 @@
       </p>
       <p>Created by: <%= @book.user.email %></p>
 
+<h2> Comments </h2>
+  <%= render @book.comments %>
+    <% if current_user %>
+      <%=render 'comments/form' %>
+    <%end%>
+
   <p><%= link_to 'Edit this book', edit_book_path(@book) %></p>
   <p><%= link_to 'Remove this book', book_path(@book), method: :delete, data: { confirm: 'Are you sure?' } %></td>
