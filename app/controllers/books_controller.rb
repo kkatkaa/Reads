@@ -1,6 +1,7 @@
 class BooksController < ApplicationController
   before_action :find_book, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, only: [:new, :edit, :create, :update, :destroy]
+  before_action :authorize_book, only: [:edit, :update, :destroy]
   # def index
   #   @books = Book.all.order("created_at desc")
   #   @books = @books.where("? = any(tags)", params[:q]) if params[:q].present?
@@ -22,7 +23,6 @@ class BooksController < ApplicationController
   end
 
   def edit
-    return unless authorize_book
   end
 
   def create
@@ -37,7 +37,6 @@ class BooksController < ApplicationController
   end
 
   def update
-    return unless authorize_book
     if @book.update(book_params)
       flash[:notice] = "The book has been updated"
       redirect_to @book
@@ -48,7 +47,6 @@ class BooksController < ApplicationController
 
   def destroy
     @book.destroy
-    return unless authorize_book
       flash[:notice] = "The book has been deleted"
       redirect_to books_path
   end
