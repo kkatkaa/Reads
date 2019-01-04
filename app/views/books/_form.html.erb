@@ -1,4 +1,4 @@
-<%= form_for @book do |f| %>
+te<%= form_for @book do |f| %>
   <%= render 'common/errors', model: @book %>
 
   <p>
@@ -7,7 +7,7 @@
   </p>
   <p>
     <%= f.label :author %>
-    <%= link_to 'Create author', authors_path %> then choose from: 
+    <%= link_to 'Create author', authors_path %> then choose from:
    <%= f.collection_check_boxes :author_ids, Author.all, :id, :name %>
  </p>
   <p>

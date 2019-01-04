@@ -1,5 +1,7 @@
 class AuthorsController < ApplicationController
   before_action :find_author, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, only: [:new, :edit, :create, :update, :destroy]
+  before_action :authorize_author, only: [:edit, :update, :destroy]
 
   def index
     @authors = Author.all.order("created_at desc")
@@ -10,6 +12,7 @@ class AuthorsController < ApplicationController
 
   def new
     @author = Author.new
+    @user = User.new
   end
 
   def edit
@@ -17,7 +20,9 @@ class AuthorsController < ApplicationController
 
   def create
     @author = Author.new(author_params)
+    @author.user = current_user if current_user
     if @author.save
+      flash[:notice] = "The author has been added"
       redirect_to @author
     else
       render 'new'
@@ -26,6 +31,7 @@ class AuthorsController < ApplicationController
 
   def update
     if @author.update(author_params)
+      flash[:notice] = "The author has been updated"
       redirect_to @author
     else
       render 'edit'
@@ -34,13 +40,24 @@ class AuthorsController < ApplicationController
 
   def destroy
     @author.destroy
+    flash[:notice] = "The author has been deleted"
     redirect_to authors_path
   end
 
   private
 
+  def authorize_author
+    if current_user != @author.user && !current_user&.admin?
+      flash[:alert] = "You are not allowed to be here"
+      redirect_to authors_path
+      false
+    else
+      true
+    end
+ end
+
   def author_params
-    params[:author].permit(:name, :born, :description, book_ids:[])
+    params[:author].permit(:name, :born, :description, :user, book_ids:[])
   end
 
   def find_author
