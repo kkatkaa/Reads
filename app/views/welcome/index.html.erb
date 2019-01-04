@@ -1,14 +1,22 @@
 <h1>GreatReads</h1>
-<hr />
-  <p>
-    <%= form_tag books_path, method: :get do %>
-      <%= text_field_tag :title, params[:title], class: "form-control" %>
-      <span class="input-group-btn">
-        <%= submit_tag "Search", name: nil, class: "btn btn-default" %>
-     </span>
-     <% end %>
-  </p>
-  <div>
-    <%= link_to 'Books', controller: "books" %>
-    <%= link_to 'Authors', controller: "authors" %>
-  </div>
+  <hr />
+
+  <h2>Deciding what to read next?</h2>
+    <p>You’re in the right place. Tell us what titles you’ve enjoyed in the past, and we’ll give you surprisingly insightful recommendations.</p>
+    <p> <%= link_to 'Books', controller: "books" %> </p>
+
+  <h2>Find your favorite author</h2>
+    <p> <%= link_to 'Authors', controller: "authors" %> </p>
+  <hr />
+
+
+
+  <h2>Searching by tags:</h2>
+    <p>
+      <%= form_tag books_path, method: :get do %>
+        <%= text_field_tag :q, params[:q], class: "form-control" %>
+        <span class="input-group-btn">
+          <%= submit_tag "Search", name: nil, class: "btn btn-default" %>
+       </span>
+       <% end %>
+    </p>
