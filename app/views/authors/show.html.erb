@@ -1,16 +1,19 @@
 <h2><i>GreatReads helps you keep track of books you want to read</i></h2>
-    <h3><%= @author.name %></h3>
-    <hr />
-      <p>Born <%= @author.born %></p>
-      <p><%= @author.description %></p>
-    <hr />
-      <p>
-        <strong><%= @author.name %>'s books</strong></br>
-          <% @author.books.each do |book| %>
-            <%= link_to book.title, book_path(book) %>
-          <% end %>
-      </p>
-  <p>Created by: <%= @author.user.email %></p>
+  <h3><%= @author.name %></h3>
+  <hr />
+    <p>Born <%= @author.born %></p>
+    <p><%= @author.description %></p>
+  <hr />
 
-  <p><%= link_to 'Edit data', edit_author_path(@author) %></p>
-  <p><%= link_to 'Remove data', author_path(@author), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <p>
+      <strong><%= @author.name %>'s books</strong></br>
+      <% @author.books.each do |book| %>
+        <%= link_to book.title, book_path(book) %>
+      <% end %>
+    </p>
+
+    <p>Created by: <%= @author.user.email %></p>
+
+    <p><%= link_to 'Edit author', edit_author_path(@author) %></p>
+    <p><%= link_to 'Remove author', author_path(@author), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <p><%= link_to 'Add another author', new_author_path(@author) %></p>
