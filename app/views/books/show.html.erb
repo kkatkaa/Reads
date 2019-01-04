@@ -1,12 +1,12 @@
-<h2><i>GreatReads helps you keep track of books you want to read</i></h2>
-    <h3><%= @book.title %></h3>
-      <p>
-    <strong>Author</strong>
-      <% @book.authors.each do |author| %>
-        <%= link_to author.name, author_path(author) %>
-      <% end %>
-      </p>
-    <hr />
+<h1><i>GreatReads helps you keep track of books you want to read</i></h2>
+  <h2><%= @book.title %></h2>
+    <p>
+      <strong>Author</strong>
+        <% @book.authors.each do |author| %>
+          <%= link_to author.name, author_path(author) %>
+        <% end %>
+    </p>
+  <hr />
 
       <p><%= @book.description %></p>
       <p>Pages: <%= @book.pages %></p>
@@ -21,12 +21,14 @@
         <% end %>
       </p>
       <p>Created by: <%= @book.user.email %></p>
+  <hr />
 
-<h2> Comments </h2>
-  <%= render @book.comments %>
-    <% if current_user %>
-      <%=render 'comments/form' %>
-    <%end%>
+  <h2> Comments </h2>
+    <%= render @book.comments %>
+      <% if current_user %>
+        <%=render 'comments/form' %>
+      <%end%>
 
-  <p><%= link_to 'Edit this book', edit_book_path(@book) %></p>
-  <p><%= link_to 'Remove this book', book_path(@book), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <p><%= link_to 'Edit this book', edit_book_path(@book) %></p>
+      <p><%= link_to 'Remove this book', book_path(@book), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <p><%= link_to 'Add another book', new_book_path(@book) %></p>
