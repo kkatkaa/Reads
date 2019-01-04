@@ -10,7 +10,6 @@
   </head>
 
   <body>
-    <%= link_to 'Home', welcome_index_path %>
     <% if notice %>
      <div class="alert alert-success">
        <%= notice %>
@@ -34,9 +33,13 @@
          <%= link_to 'Sign up', new_user_registration_path%>
        </p>
      <% end %>
-       <i>GreatReads helps you keep track of books you want to read</i>
+     <p><%= link_to welcome_index_path do %>
+          <%= image_tag("greatreads.jpg", "data-svg-fallback" => asset_path("greatreads.jpg")) %>
+        <% end %></p>
+
+       <p><i>GreatReads helps you keep track of books you want to read</i></p>
        <hr />
-       
+
      <div class="container">
     <%= yield %>
   </body>
