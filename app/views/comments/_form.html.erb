@@ -2,10 +2,18 @@
 
 <%= form_for [@book, @comment] do |f| %>
 
-  <div class="form-group">
+  <p>
     <%= f.label :body %>
-    <%= f.text_area :body, class: 'form-control' %>
+    <%= f.text_area :body %>
+  </p>
+  <p>
+   <%= f.label :rating %><br>
+   <%= f.text_field :rating %>
+  </p>
+  <p>
     <%= f.submit %>
-  </div>
+  </p>
+
+
 
 <% end %>

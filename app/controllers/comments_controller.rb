@@ -35,7 +35,7 @@ class CommentsController < ApplicationController
     @comment = Comment.find(params[:id])
     @comment.destroy
     flash[:notice] = "The comment has been deleted"
-    redirect_to comment_path(@comment)
+    redirect_to book_path(@book)
   end
 
   private
@@ -45,6 +45,6 @@ class CommentsController < ApplicationController
   end
 
   def comment_params
-     params.require(:comment).permit(:user, :body)
+     params.require(:comment).permit(:user, :body, :rating)
   end
 end
