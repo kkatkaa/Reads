@@ -1,7 +1,12 @@
 <h1>GreatReads</h1>
 <div class="jumbotron jumbotron-fluid">
   <div class="container">
-    <h2 class="display-4"><%= @author.name %></h2>
+
+    <h2 class="display-4">
+      <p style="display: inline"><%= @author.name %></p>
+      <p style="display: inline"><%= image_tag @author.image.url(:thumb) %></p>
+    </h2>
+
     <hr class="my-4">
     <p>Born <%= @author.born %></p>
     <p><%= @author.description %></p>
@@ -14,7 +19,7 @@
       <%= link_to book.title, book_path(book) %>
     <% end %>
   </div>
-  
+
   <div class="container-fluid">
     <p>Created by: <%= @author.user.email %></p>
   </div>

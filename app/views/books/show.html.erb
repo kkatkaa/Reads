@@ -1,7 +1,10 @@
 <h1>GreatReads</h1>
 <div class="jumbotron jumbotron-fluid">
   <div class="container">
-    <h2 class="display-4"><%= @book.title %></h2>
+    <h2 class="display-4">
+      <p style="display: inline"><%= @book.title %></p>
+      <p style="display: inline"> <%= image_tag @book.image.url(:medium) %></p>
+    </h2>
     <hr class="my-4">
       <strong>Author</strong>
       <% @book.authors.each do |author| %>
