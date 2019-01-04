@@ -1,41 +1,49 @@
+<div class="container-fluid">
   <%= form_for @book do |f| %>
   <%= render 'common/errors', model: @book %>
 
-  <p>
-    <%= f.label :title %>
-    <%= f.text_field :title %>
-  </p>
-  <p>
-    <%= f.label :author %>
-    <%= link_to 'Create author', authors_path %> then choose from:
-   <%= f.collection_check_boxes :author_ids, Author.all, :id, :name %>
- </p>
-  <p>
-    <%= f.label :description %>
-    <%= f.text_area :description %>
-  </p>
-  <p>
-    <%= f.label :pages %>
-    <%= f.text_field :pages %>
-  </p>
-  <p>
-    <%= f.label :isbn %>
-    <%= f.text_field :isbn %>
-  </p>
-  <p>
-    <%= f.label :date %>
-    <%= f.text_field :date %>
-  </p>
-  <p>
-    <%= f.label :language %>
-    <%= f.text_field :language %>
-  </p>
-  <p>
-   <%= f.label :tags %><br>
-   <%= f.text_field :tags %>
- </p>
+    <div class="form-group">
+      <%= f.label :title %>
+      <%= f.text_field :title, class: 'form-control' %>
+    </div>
 
-  <p>
-    <%= f.submit %>
-  </p>
-<% end %>
+    <div class="form-group">
+      <%= link_to 'Create author', authors_path %> then choose from:
+      <%= f.collection_check_boxes :author_ids, Author.all, :id, :name, class: 'form-control' %>
+   </div>
+
+    <div class="form-group">
+      <%= f.label :description %>
+      <%= f.text_area :description, class: 'form-control' %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :pages %>
+      <%= f.text_field :pages, class: 'form-control' %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :isbn %>
+      <%= f.text_field :isbn, class: 'form-control' %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :date %>
+      <%= f.text_field :date, class: 'form-control' %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :language %>
+      <%= f.text_field :language, class: 'form-control' %>
+    </div>
+
+    <div class="form-group">
+     <%= f.label :tags %><br>
+     <%= f.text_field :tags, class: 'form-control' %>
+   </div>
+
+    <div>
+      <%= f.submit %>
+    </div>
+  <% end %>
+</div>

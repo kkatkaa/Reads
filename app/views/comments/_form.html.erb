@@ -1,19 +1,18 @@
-<%= render 'common/errors', model: @comment %>
+<div class="container-fluid">
+  <%= render 'common/errors', model: @comment %>
+  <%= form_for [@book, @comment] do |f| %>
+    <div class="form-group">
+      <%= f.label :body %>
+      <%= f.text_area :body, class: 'form-control' %>
+    </div>
 
-<%= form_for [@book, @comment] do |f| %>
+    <div class="form-group">
+     <%= f.label :rating %><br>
+     <%= f.text_field :rating, class: 'form-control' %>
+   </div>
 
-  <p>
-    <%= f.label :body %>
-    <%= f.text_area :body %>
-  </p>
-  <p>
-   <%= f.label :rating %><br>
-   <%= f.text_field :rating %>
-  </p>
-  <p>
-    <%= f.submit %>
-  </p>
-
-
-
-<% end %>
+    <div>
+      <%= f.submit %>
+    </div>
+  <% end %>
+</div>

@@ -1,12 +1,23 @@
-<h1> GreatReads </h1>
-  <p><%= link_to "Add author", "/authors/new" %></p>
-
+<div class="jumbotron">
+  <h1 class="display-4">GreatReads </h1>
+  <hr class="my-4">
+    <%= link_to "Add author", "/authors/new" %>
   <hr />
+</div>
 
   <h2> Meet your favorite author...</h2>
+    <table class='table table-hover'>
+      <thead>
+        <tr>
+          <th>List of authors</th>
+        </tr>
+      </thead>
 
-    <% @authors.each do |author| %>
-      <h3>
-        <%= link_to author.name, author_path(author) %>
-      </h3>
-    <% end %>
+      <tbody>
+        <% @authors.each do |author| %>
+          <tr>
+            <td><i><%= link_to author.name, author_path(author) %></i></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>

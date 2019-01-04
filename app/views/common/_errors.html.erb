@@ -1,5 +1,5 @@
 <% if model.errors.any? %>
-    <div id="error_explanation">
+    <div class="alert alert-warning" role="alert" id"alert"="error_explanation">
       <h2>
         <%= pluralize(model.errors.count, 'error') %> prohibited this data from being save:  </h2>
       </h2>

@@ -1,22 +1,21 @@
-<h1>GreatReads</h1>
-  <hr />
+<div class="jumbotron">
+  <h1 class="display-4">GreatReads</h1>
+    <hr class="my-4">
 
-  <h2>Deciding what to read next?</h2>
-    <p>You’re in the right place. Tell us what titles you’ve enjoyed in the past, and we’ll give you surprisingly insightful recommendations.</p>
-    <p> <%= link_to 'Books', controller: "books" %> </p>
+    <h2 class="lead">Deciding what to read next?</h2>
+      <%= link_to 'Books', controller: "books" %>
 
-  <h2>Find your favorite author</h2>
-    <p> <%= link_to 'Authors', controller: "authors" %> </p>
-  <hr />
+    <h2 class="lead">Find your favorite author</h2>
+      <%= link_to 'Authors', controller: "authors" %>
+    <hr />
 
-
-
-  <h2>Searching by tags:</h2>
-    <p>
+    <h2>Searching by tags:</h2>
       <%= form_tag books_path, method: :get do %>
+      <div class="input-group">
         <%= text_field_tag :q, params[:q], class: "form-control" %>
         <span class="input-group-btn">
-          <%= submit_tag "Search", name: nil, class: "btn btn-default" %>
-       </span>
-       <% end %>
-    </p>
+          <%= submit_tag "Search", name: nil, class: "btn btn-dark" %>
+        </span>
+      </div>
+    <% end %>
+</div>
