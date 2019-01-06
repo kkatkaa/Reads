@@ -10,7 +10,6 @@
       <thead>
         <tr>
           <th>List of authors</th>
-          <th> Remove authot </th>
         </tr>
       </thead>
 
@@ -18,7 +17,6 @@
         <% @authors.each do |author| %>
           <tr>
             <td><i><%= link_to author.name, author_path(author) %></i></td>
-            <td><%= link_to 'Remove author', author_path(author), method: :delete, data: { confirm: 'Are you sure?' } %></td>
           </tr>
         <% end %>
       </tbody>
