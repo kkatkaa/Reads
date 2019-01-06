@@ -17,3 +17,11 @@
 //= require jquery3
 //= require popper
 //= require bootstrap-sprockets
+//= require select2
+
+// $( "#dropdown" ).select2({
+//     theme: "bootstrap"
+// });
+window.addEventListener('load', function () {
+    $('#book_author_ids').select2();
+});
