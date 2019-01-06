@@ -10,7 +10,7 @@
       </span>
     </div>
     <% end %>
-    
+
   <hr class="my-4">
     <%= link_to "Add book", "/books/new" %>
   <hr />
@@ -21,6 +21,7 @@
       <thead>
         <tr>
           <th>Best books</th>
+          <th>Rating</th>
         </tr>
       </thead>
 
@@ -28,6 +29,7 @@
         <% @books.each do |book| %>
         <tr>
           <td><i><%= link_to book.title, book_path(book) %></i></td>
+          <td><%= book.average_rating %></td>
         </tr>
         <% end %>
       </tbody>

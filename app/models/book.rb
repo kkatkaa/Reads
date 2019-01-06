@@ -20,6 +20,10 @@ class Book < ApplicationRecord
     super(value)
   end
 
+  def average_rating
+    self.comments.average(:rating)
+  end
+
   private
 
   def sanitize_tags(text)
