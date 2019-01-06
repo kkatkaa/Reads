@@ -1,7 +1,7 @@
 class BooksController < ApplicationController
   before_action :find_book, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, only: [:new, :edit, :create, :update, :destroy]
-  before_action :authorize_book, only: [:edit, :update, :destroy]
+  before_action :authorize_book, only: [:create, :new, :edit, :update, :destroy]
   # def index
   #   @books = Book.all.order("created_at desc")
   #   @books = @books.where("? = any(tags)", params[:q]) if params[:q].present?
@@ -54,7 +54,7 @@ class BooksController < ApplicationController
 
   private
   def authorize_book
-    if current_user != @book.user && !current_user&.admin?
+    if current_user != !current_user&.admin?
       flash[:alert] = "You are not allowed to be here"
       redirect_to books_path
       false
