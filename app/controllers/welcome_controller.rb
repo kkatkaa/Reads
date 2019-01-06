@@ -1,9 +1,6 @@
 class WelcomeController < ApplicationController
   def index
-    if params[:q]
-       @books = Book.where('tag LIKE ?', "%#{params[:q]}%")
-     else
-       @books = Book.all
-     end
+    @books = Book.all.order("created_at desc")
+    @books = @books.where("? = any(tags)", params[:q]) if params[:q].present?
   end
 end
