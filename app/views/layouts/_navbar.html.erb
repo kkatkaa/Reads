@@ -1,0 +1,42 @@
+<nav class="navbar navbar-expand-lg navbar-secondary bg-secondary">
+  <div class="navbar-brand" href="#">
+    <%= link_to welcome_index_path do %>
+      <%= image_tag("greatreads.jpg", "data-svg-fallback" => asset_path("greatreads.jpg")) %>
+    <% end %>
+  </div>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="#"><%=  link_to 'Books', books_path, class: "btn btn-dark" %><span class="sr-only"></span></a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="#"><%= link_to 'Authors', authors_path, class: "btn btn-dark" %><span class="sr-only"></span></a>
+      </li>
+    </ul>
+  </div>
+
+  <div id="signInForm">
+    <div class="nav-item active">
+      <% if user_signed_in? %>
+      <p>
+         Hello <%= current_user.email %>!<br>
+         <%= link_to 'Log out', destroy_user_session_path, class: "btn btn-dark", method: :delete %>
+      </p>
+    </div>
+     <% else %>
+
+        <div class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle btn btn-dark" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Sign in
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="#"> <%= link_to 'Sign in', new_user_session_path, class: "btn btn-dark" %><br></a>
+            <a class="dropdown-item btn btn-dark" href="#"> <%= link_to 'Sign up', new_user_registration_path, class: "btn btn-dark"%></a>
+          </div>
+      <% end %>
+    </div>
+
+
+  </div>
+</nav>

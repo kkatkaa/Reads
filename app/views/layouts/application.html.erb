@@ -10,37 +10,13 @@
   </head>
 
   <body>
-    <% if notice %>
-     <div class="alert alert-success">
-       <%= notice %>
-     <% end %>
-     </div>
+    <%= render 'layouts/navbar' %>
 
-      <% if alert %>
-     <div class="alert alert-danger">
-       <%= alert %>
-     </div>
-     <% end %>
+    <div class="container"> <i>GreatReads helps you keep track of books you want to read</i></div>
+    <hr />
 
-      <% if user_signed_in? %>
-       <p>
-         Hello <%= current_user.email %>!<br>
-         <%= link_to 'Log out', destroy_user_session_path, method: :delete %>
-       </p>
-     <% else %>
-       <p>
-         <%= link_to 'Sign in', new_user_session_path%><br>
-         <%= link_to 'Sign up', new_user_registration_path%>
-       </p>
-     <% end %>
-     <p><%= link_to welcome_index_path do %>
-          <%= image_tag("greatreads.jpg", "data-svg-fallback" => asset_path("greatreads.jpg")) %>
-        <% end %></p>
-
-       <p><i>GreatReads helps you keep track of books you want to read</i></p>
-       <hr />
-
-     <div class="container">
-    <%= yield %>
+    <div class="container">
+      <%= yield %>
+    </div>
   </body>
 </html>
