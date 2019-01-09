@@ -20,7 +20,7 @@ class Book < ApplicationRecord
     super(value)
   end
 
-  def average_rating
+  def avg_rating
     self.comments.average(:rating)
   end
 
