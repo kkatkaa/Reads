@@ -12,6 +12,10 @@ class BooksController < ApplicationController
     else
        @books = Book.all
     end
+
+    def index
+      @books = Book.paginate(:page => params[:page], :per_page => 5)
+    end
   end
 
   def show

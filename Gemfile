@@ -39,6 +39,9 @@ gem 'bootstrap', '~> 4.2.1'
 gem 'jquery-rails'
 gem "paperclip", "~> 6.0.0"
 gem "select2-rails"
+gem 'will_paginate', '~> 3.1.1'
+gem 'will_paginate-bootstrap'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
