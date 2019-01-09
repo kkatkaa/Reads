@@ -9,13 +9,13 @@ class BooksController < ApplicationController
   def index
     if params[:title]
        @books = Book.where('title LIKE ?', "%#{params[:title]}%")
-     else
+    else
        @books = Book.all
-     end
+    end
   end
 
   def show
-      @comment = Comment.new
+    @comment = Comment.new
   end
 
   def new
