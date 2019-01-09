@@ -21,16 +21,20 @@
       <thead>
         <tr>
           <th>Best books</th>
+          <th>Published</th>
           <th>Rating</th>
+          <th>More...</th>
         </tr>
       </thead>
 
       <tbody>
         <% @books.each do |book| %>
-        <tr>
-          <td><i><%= link_to book.title, book_path(book) %></i></td>
-          <td><%= book.average_rating&.round(1) %></td>
-        </tr>
+          <tr>
+            <td><i><%= book.title %></i></td>
+            <td><%= book.date %>
+            <td><%= book.avg_rating&.round(1) %></td>
+            <td><%= link_to 'More', book_path(book) %></td>
+          </tr>
         <% end %>
       </tbody>
     </table>
