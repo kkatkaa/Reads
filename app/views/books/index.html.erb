@@ -45,7 +45,7 @@
 
     <div class="digg_pagination">
       <div class="page_info">
-        <%= page_entries_info @books %>
+        <p><%= page_entries_info @books %></p>
       </div>
-      <%= will_paginate @books, :container => false %>
+      <p><%= will_paginate @books, :container => false %></p>
     </div>
