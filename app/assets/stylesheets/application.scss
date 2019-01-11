@@ -18,9 +18,11 @@
  .navbar .profile-image{
     margin: -20px 10px;
     height: 50px;
+    border-radius: 50%;
+
 }
 /* navbar */
-$bgDefault      : #dcd3b6;
+$bgDefault      : #e4cdb4;
 $bgHighlight    : #e8bd81;
 $colDefault     : #ecf0f1;
 $colHighlight   : #161514;
