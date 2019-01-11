@@ -1,22 +1,22 @@
-<div class="jumbotron">
-  <h1 class="display-4">GreatReads </h1>
+<div class="container">
+  <div class="jumbotron">
+    <h1 class="display-4">GreatReads </h1>
+      <p><i>You’re in the right place. What title are you searching for?</i></p>
+        <%= form_tag(books_path, method: :get) do %>
+        <div class="input-group">
+          <%= text_field_tag :title, params[:title] %>
+          <span class="input-group-btn">
+            <%= submit_tag "Search", name: nil, class: "btn btn-dark"  %>
+          </span>
+        </div>
+        <% end %>
+    <hr class="my-4">
+      <%= link_to "Add book", "/books/new" %>
+    <hr />
+  </div>
 
-  <p><i>You’re in the right place. What title are you searching for?</i></p>
-    <%= form_tag(books_path, method: :get) do %>
-    <div class="input-group">
-      <%= text_field_tag :title, params[:title] %>
-      <span class="input-group-btn">
-        <%= submit_tag "Search", name: nil, class: "btn btn-dark"  %>
-      </span>
-    </div>
-    <% end %>
-
-  <hr class="my-4">
-    <%= link_to "Add book", "/books/new" %>
-  <hr />
-</div>
-
-  <h2> Meet your favorite book...</h2>
+  <div class="container">
+    <h2> Meet your favorite book...</h2>
     <table class='table table-hover'>
       <thead>
         <tr>
@@ -42,10 +42,12 @@
         <% end %>
       </tbody>
     </table>
-
-    <div class="digg_pagination">
-      <div class="page_info">
-        <p><%= page_entries_info @books %></p>
-      </div>
-      <p><%= will_paginate @books, :container => false %></p>
     </div>
+
+  <div class="digg_pagination">
+    <div class="page_info">
+      <p><%= page_entries_info @books %></p>
+    </div>
+    <p><%= will_paginate @books, :container => false %></p>
+  </div>
+</div>

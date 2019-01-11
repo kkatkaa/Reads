@@ -1,11 +1,13 @@
-<div class="jumbotron">
-  <h1 class="display-4">GreatReads </h1>
-  <hr class="my-4">
-    <%= link_to "Add author", "/authors/new" %>
-  <hr />
-</div>
+<div class="container">
+  <div class="jumbotron">
+    <h1 class="display-4">GreatReads </h1>
+    <hr class="my-4">
+      <%= link_to "Add author", "/authors/new" %>
+    <hr />
+  </div>
 
-  <h2> Meet your favorite author...</h2>
+  <div class="container">
+    <h2> Meet your favorite author...</h2>
     <table class='table table-hover'>
       <thead>
         <tr>
@@ -21,9 +23,11 @@
         <% end %>
       </tbody>
     </table>
+
     <div class="digg_pagination">
       <div class="page_info">
         <p><%= page_entries_info @authors %></p>
       </div>
       <p><%= will_paginate @authors, :container => false %></p>
   </div>
+</div>

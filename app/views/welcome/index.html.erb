@@ -1,40 +1,42 @@
 <div class="container">
-  <div class= "row">
-    <div class="jumbotron col">
-      <h1 class="display-4">GreatReads</h1>
+  <div class="row justify-content-around">
+    <div class="column-1">
+      <h1>Meet your next favorite book.</h1>
       <hr />
-        <h2 class="lead">Deciding what to read next?</h2>
-          <%= link_to 'Books', controller: "books" %>
-        <hr />
-        <h2 class="lead">Find your favorite author</h2>
-          <%= link_to 'Authors', controller: "authors" %>
-        <hr />
+      <h2 class="lead">Deciding what to read next?</h2>
+        <%= link_to 'Books', controller: "books" %>
+      <hr />
+      <h2 class="lead">Find your favorite author:</h2>
+        <%= link_to 'Authors', controller: "authors" %>
+      <hr />
 
-        <h2 class="lead">Searching by tags:</h2>
-          <%= form_tag welcome_index_path, method: :get do %>
-          <div class="input-group">
-            <%= text_field_tag :q, params[:q], class: "form-control" %>
-            <span class="input-group-btn">
-              <%= submit_tag "Search", name: nil, class: "btn btn-dark" %>
-            </span>
-          </div>
-        <% end %>
+      <h2 class="lead">Searching by tags:</h2>
+        <%= form_tag welcome_index_path, method: :get do %>
+        <div class="input-group">
+          <%= text_field_tag :q, params[:q], class: "form-control" %>
+          <span class="input-group-btn">
+            <%= submit_tag "Search", name: nil, class: "btn btn-dark" %>
+          </span>
+        </div>
+      <% end %>
     </div>
 
-    <div class="column">
+    <div class="column-2">
       <h2 class="lead">Top rated books:</h2>
       <table class='table table-hover'>
         <thead>
           <tr>
+            <th></th>
             <th>Best books</th>
             <th>Rating</th>
           </tr>
         </thead>
 
         <tbody>
-          <% @books.limit(10).each do |book| %>
+          <% @books.limit(10).each.with_index(1) do |book, index| %>
           <tr>
-            <td><i><%= link_to book.title, book_path(book) %></i></td>
+            <td><%= index %>
+            <td><i><%= link_to book.title, book_path(book), class: "btn btn-outline-dark" %></i></td>
             <td><%= book.avg_rating&.round(1) %></td>
           </tr>
           <% end %>
