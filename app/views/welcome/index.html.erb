@@ -37,7 +37,7 @@
           <tr>
             <td><%= index %>
             <td><i><%= link_to book.title, book_path(book), class: "btn btn-outline-dark" %></i></td>
-            <td><%= book.avg_rating&.round(1) %></td>
+            <td><%= book.rating_average %></td>
           </tr>
           <% end %>
         </tbody>

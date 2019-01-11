@@ -36,7 +36,7 @@
               <%= link_to author.name, author_path(author) %>
             <% end %></td>
             <td><%= book.date %>
-            <td><%= book.avg_rating&.round(1) %></td>
+            <td><%= book.rating_average %></td>
             <td><%= link_to 'More', book_path(book) %></td>
           </tr>
         <% end %>
