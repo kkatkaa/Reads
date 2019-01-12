@@ -14,7 +14,7 @@
   </div>
 
   <div class="container-fluid">
-      <p>Rating: <%= @book.avg_of_grades&.round(1) %></p>
+      <p>Rating: <%= @book.average_rating %></p>
       <p><%= @book.description %></p>
       <p>Pages: <%= @book.pages %></p>
       <p>Published: <%= @book.date %></p>
@@ -25,7 +25,7 @@
   <div class="container-fluid">
     <strong> Tags:</strong>
     <% @book.tags.each do |t| %>
-      <%=link_to t, books_path(q: t), class: "badge badge-dark"%>
+      <%=link_to t, books_path(q: t), class: "badge badge-dark" %>
     <% end %>
   </div>
 
@@ -44,7 +44,7 @@
 
   <hr />
   <div>
-    <p><%= link_to 'All Books', books_path%> </p>
+    <p><%= link_to 'All Books', books_path %> </p>
     <p><%= link_to 'Edit this book', edit_book_path(@book) %></p>
     <p><%= link_to 'Remove this book', book_path(@book), method: :delete, data: { confirm: 'Are you sure?' } %></td>
     <p><%= link_to 'Add another book', new_book_path(@book) %></p>

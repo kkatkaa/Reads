@@ -14,7 +14,7 @@
 
     <div class="form-group">
       <%= link_to 'Create author', authors_path %> or choose from:
-      <%= f.collection_select :author_ids, Author.all, :id, :name, { class: 'form-control'}, { multiple: true } %>
+      <%= f.collection_select :author_ids, Author.all, :id, :name, { class: 'form-control' }, { multiple: true } %>
    </div>
 
     <div class="form-group">

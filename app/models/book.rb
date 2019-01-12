@@ -20,8 +20,8 @@ class Book < ApplicationRecord
     super(value)
   end
 
-  def avg_of_grades
-    self.comments.average(:rating)
+  def average_rating
+    self.comments.average(:rating).round(1)
   end
 
   private

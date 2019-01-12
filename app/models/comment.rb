@@ -8,6 +8,6 @@ class Comment < ApplicationRecord
 
   private
   def update_rating_average
-    book.update_column(:rating_average, book.avg_of_grades)
+    book.update_column(:rating_average, book.average_rating)
   end
 end
