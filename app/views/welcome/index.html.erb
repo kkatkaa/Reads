@@ -33,7 +33,7 @@
         </thead>
 
         <tbody>
-          <% @books.limit(10).each.with_index(1) do |book, index| %>
+          <% @books.each.with_index(1) do |book, index| %>
           <tr>
             <td><%= index %>
             <td><i><%= link_to book.title, book_path(book), class: "btn btn-outline-dark" %></i></td>
