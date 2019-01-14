@@ -14,7 +14,7 @@
   </div>
 
   <div class="container-fluid">
-      <p>Rating: <%= @book.average_rating %></p>
+      <p>Rating: <%= @book.average_rating.round(1) %></p>
       <p><%= @book.description %></p>
       <p>Pages: <%= @book.pages %></p>
       <p>Published: <%= @book.date %></p>
