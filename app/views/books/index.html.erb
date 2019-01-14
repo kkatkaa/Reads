@@ -37,10 +37,10 @@
             <% end %></td>
             <td><%= book.date %></td>
             <td>
-              <% if book.rating_average.nil? %>
+              <% if book.average_ranking.nil? %>
                 <%= link_to 'Be the first to rate', book_path(book) %>
               <% elsif %>
-                <%= book.rating_average %>
+                <%= book.average_ranking %>
               <% end %>
             </td>
             <td><%= link_to 'More', book_path(book) %></td>

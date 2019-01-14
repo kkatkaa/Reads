@@ -15,10 +15,10 @@
 
   <div class="container-fluid">
       <p>Rating:
-        <% if @book.rating_average.nil? %>
+        <% if @book.average_ranking.nil? %>
           0
         <% elsif %>
-          <%= @book.rating_average %>
+          <%= @book.average_ranking %>
         <% end %>
       </p>
       <p><%= @book.description %></p>
