@@ -11,14 +11,18 @@
     <table class='table table-hover'>
       <thead>
         <tr>
+          <th></th>
           <th>List of authors</th>
+          <th>Born</th>
         </tr>
       </thead>
 
       <tbody>
         <% @authors.each do |author| %>
           <tr>
+            <td><%= image_tag author.image.url(:thumb) %></td>
             <td><i><%= link_to author.name, author_path(author) %></i></td>
+            <td><%= author.born %></td>
           </tr>
         <% end %>
       </tbody>
