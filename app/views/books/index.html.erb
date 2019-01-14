@@ -35,8 +35,14 @@
             <td><% book.authors.each do |author|  %>
               <%= link_to author.name, author_path(author) %>
             <% end %></td>
-            <td><%= book.date %>
-            <td><%= book.rating_average %></td>
+            <td><%= book.date %></td>
+            <td>
+              <% if book.rating_average.nil? %>
+                <%= link_to 'Be the first to rate', book_path(book) %>
+              <% elsif %>
+                <%= book.rating_average %>
+              <% end %>
+            </td>
             <td><%= link_to 'More', book_path(book) %></td>
           </tr>
         <% end %>

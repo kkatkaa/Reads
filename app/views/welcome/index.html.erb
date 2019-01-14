@@ -37,7 +37,13 @@
           <tr>
             <td><%= index %>
             <td><i><%= link_to book.title, book_path(book), class: "btn btn-outline-dark" %></i></td>
-            <td><%= book.rating_average.round(1) %></td>
+            <td>
+              <% if book.rating_average.nil? %>
+                <%= link_to 'Be the first to rate', book_path(book) %>
+              <% elsif %>
+                <%= book.rating_average %>
+              <% end %>
+            </td>
           </tr>
           <% end %>
         </tbody>

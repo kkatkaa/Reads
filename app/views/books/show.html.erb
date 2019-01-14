@@ -14,7 +14,13 @@
   </div>
 
   <div class="container-fluid">
-      <p>Rating: <%= @book.average_rating.round(1) %></p>
+      <p>Rating:
+        <% if @book.rating_average.nil? %>
+          0
+        <% elsif %>
+          <%= @book.rating_average %>
+        <% end %>
+      </p>
       <p><%= @book.description %></p>
       <p>Pages: <%= @book.pages %></p>
       <p>Published: <%= @book.date %></p>
