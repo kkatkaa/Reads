@@ -10,7 +10,7 @@
         <%= link_to 'Authors', controller: "authors" %>
       <hr />
 
-      <h2 class="lead">Searching by tags:</h2>
+      <h2 class="lead">Search and browse books by tags:</h2>
         <%= form_tag welcome_index_path, method: :get do %>
         <div class="input-group">
           <%= text_field_tag :q, params[:q], class: "form-control" %>
@@ -22,12 +22,12 @@
     </div>
 
     <div class="column-2">
-      <h2 class="lead">Top rated books:</h2>
+      <h2 class="lead"></h2>
       <table class='table table-hover'>
         <thead>
           <tr>
             <th></th>
-            <th>Best books</th>
+            <th>Top rated books</th>
             <th>Rating</th>
           </tr>
         </thead>
