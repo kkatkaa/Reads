@@ -14,7 +14,7 @@ class CommentsController < ApplicationController
     @comment.book = @book
     @comment.user = current_user
     if @comment.save
-      flash[:notice] = "Your comment has been added"
+      flash[:notice] = "The comment has been added"
       redirect_to book_path(@book)
     else
       render 'books/show'
