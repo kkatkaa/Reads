@@ -47,7 +47,8 @@
         <%=render 'comments/form' %>
       <%end%>
   </div>
-
+  <hr />
+  <p><%= link_to favorite_text, favorites_update_path(book: @book), id:'favorite_link', remote: true %></p>
   <hr />
   <div>
     <p><%= link_to 'All Books', books_path %> </p>

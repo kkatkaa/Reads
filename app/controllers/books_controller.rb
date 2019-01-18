@@ -12,10 +12,11 @@ class BooksController < ApplicationController
     else
        @books = Book.all
     end
-    @books = Book.order('title asc').paginate(:page => params[:page], :per_page => 5)  
+    @books = Book.order('title asc').paginate(:page => params[:page], :per_page => 5)
   end
 
   def show
+    @favorite_exists = Favorite.where(book: @book, user: current_user) == [] ? false : true
     @comment = Comment.new
   end
 
