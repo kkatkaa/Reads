@@ -3,4 +3,8 @@ class UsersController < ApplicationController
     @users = User.all
     @book = Book.all
   end
+
+  def edit
+    @user = current_user
+  end
 end
