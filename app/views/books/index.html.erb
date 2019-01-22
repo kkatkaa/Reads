@@ -54,6 +54,6 @@
     <div class="page_info">
       <p><%= page_entries_info @books %></p>
     </div>
-    <%= will_paginate @books, :container => false, renderer: BootstrapPagination::Rails %>
+    <%= paginate @books, theme: 'twitter-bootstrap-4' %> 
   </div>
 </div>

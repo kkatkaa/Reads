@@ -39,8 +39,8 @@ gem 'bootstrap', '~> 4.2.1'
 gem 'jquery-rails'
 gem "paperclip", "~> 6.0.0"
 gem "select2-rails"
-gem 'will_paginate', '~> 3.1.1'
-gem 'will_paginate-bootstrap'
+gem 'kaminari'
+gem 'bootstrap4-kaminari-views'
 gem 'carrierwave', '~> 1.0'
 
 group :development, :test do

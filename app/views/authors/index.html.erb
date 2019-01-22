@@ -32,6 +32,6 @@
       <div class="page_info">
         <p><%= page_entries_info @authors %></p>
       </div>
-      <p><%= will_paginate @authors, :container => false %></p>
+      <%= paginate @authors, theme: 'twitter-bootstrap-4' %>
   </div>
 </div>

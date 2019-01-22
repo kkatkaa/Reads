@@ -4,7 +4,7 @@ class AuthorsController < ApplicationController
   before_action :authorize_author, only: [:edit, :update, :destroy]
 
   def index
-    @authors = Author.order('name asc').paginate(:page => params[:page], :per_page => 5)
+    @authors = Author.order('name asc').page(params[:page]).per(5)
   end
 
   def show
