@@ -8,11 +8,12 @@ class BooksController < ApplicationController
   # end
   def index
     if params[:title]
-       @books = Book.where('title LIKE ?', "%#{params[:title]}%")
+       @books = Book.where('title LIKE ?', "%#{params[:title]}%").page(params[:page]).per(5)
+    elsif params[:q]
+       @books = Book.where("? = any(tags)", params[:q]).page(params[:page]).per(5) if params[:q].present?
     else
-       @books = Book.all
+       @books = Book.order('title asc').page(params[:page]).per(5)
     end
-    @books = Book.order('title asc').page(params[:page]).per(5)
   end
 
   def show
