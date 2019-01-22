@@ -1,14 +1,13 @@
 class FavoritesController < ApplicationController
-  def update
-    favorite = Favorite.where(book: Book.find(params[:book]), user: current_user)
-    if favorite == []
-      Favorite.create(book: Book.find(params[:book]), user: current_user)
-      @favorite_exists = true
-    else
-      favorite.destroy_all
-      @favorite_exists = false
-    end
+  def create
+    favorite = Favorite.new(book_id: params[:book_id], user: current_user)
+    favorite.save
+    redirect_to book_path(favorite.book)
+  end
 
-    redirect_to book_path(params[:book])
+  def destroy
+    favorite = Favorite.find(params[:id])
+    favorite.destroy
+    redirect_to book_path(favorite.book)
   end
 end

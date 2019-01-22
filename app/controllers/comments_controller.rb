@@ -12,6 +12,7 @@ class CommentsController < ApplicationController
   def create
     @comment = Comment.new(comment_params)
     @comment.book = @book
+    @favorite = Favorite.find_or_initialize_by(book: @book, user: current_user)
     @comment.user = current_user
     if @comment.save
       flash[:notice] = "The comment has been added"

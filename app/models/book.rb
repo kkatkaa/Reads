@@ -9,6 +9,8 @@ class Book < ApplicationRecord
   has_many :authors_books
   has_many :authors, through: :authors_books
   has_many :comments, dependent: :destroy
+  has_many :favorites
+  has_many :users, through: :favorites   
   belongs_to :user
 
   has_attached_file :image, styles: { medium: "300x300>", thumb: "100x100>" }

@@ -12,7 +12,8 @@ class User < ApplicationRecord
   has_many :books, foreign_key: :user_id
   has_many :authors, foreign_key: :user_id
   has_many :favorites
-  
+  has_many :favorited_books, through: :favorites, source: :book
+
   def admin?
      admin
   end

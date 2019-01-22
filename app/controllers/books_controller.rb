@@ -16,7 +16,7 @@ class BooksController < ApplicationController
   end
 
   def show
-    @favorite_exists = Favorite.where(book: @book, user: current_user) == [] ? false : true
+    @favorite = Favorite.find_or_initialize_by(book: @book, user: current_user)
     @comment = Comment.new
   end
 

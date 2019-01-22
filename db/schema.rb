@@ -68,11 +68,12 @@ ActiveRecord::Schema.define(version: 2019_01_20_154623) do
   end
 
   create_table "favorites", force: :cascade do |t|
-    t.bigint "book_id"
-    t.bigint "user_id"
+    t.bigint "book_id", null: false
+    t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["book_id"], name: "index_favorites_on_book_id"
+    t.index ["user_id", "book_id"], name: "index_favorites_on_user_id_and_book_id", unique: true
     t.index ["user_id"], name: "index_favorites_on_user_id"
   end
 
