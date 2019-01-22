@@ -47,13 +47,15 @@
         <%=render 'comments/form' %>
       <%end%>
   </div>
-  
+
   <hr />
     <%= pluralize(@book.favorites.count, 'person') %> liked this book
-     <% if @favorite.persisted? %>
-       <%= link_to 'Remove from favorites', book_favorite_path(@book, @favorite), method: :delete, class: "btn btn-dark" %>
-     <% else %>
-       <%= link_to 'Add to favorite', book_favorites_path(@book), method: :post, class: "btn btn-dark" %>
+     <% if current_user %>
+       <% if @favorite.persisted? %>
+         <%= link_to 'Remove from favorites', book_favorite_path(@book, @favorite), method: :delete, class: "btn btn-dark" %>
+       <% else %>
+         <%= link_to 'Add to favorite', book_favorites_path(@book), method: :post, class: "btn btn-dark" %>
+      <% end %>
     <% end %>
 
   <hr />

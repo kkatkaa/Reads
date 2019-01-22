@@ -29,17 +29,18 @@
          <% end %>
          <%= link_to 'Log out', destroy_user_session_path, class: "btn btn-dark", method: :delete %>
       </p>
-    </div>
+
        <% else %>
          <p>Sign in or create a free account</p>
          <div class="nav-item dropdown">
            <a class="nav-link dropdown-toggle btn btn-dark" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
              Log in
            </a>
-         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-           <a class="dropdown-item"> <%= link_to 'Sign in', new_user_session_path, class: "btn btn-dark" %><br></a>
-           <a class="dropdown-item" > <%= link_to 'Sign up', new_user_registration_path, class: "btn btn-dark"%></a>
-         </div>
+           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+             <a class="dropdown-item"> <%= link_to 'Sign in', new_user_session_path, class: "btn btn-dark" %><br></a>
+             <a class="dropdown-item" > <%= link_to 'Sign up', new_user_registration_path, class: "btn btn-dark"%></a>
+           </div>
+        </div>
       <% end %>
     </div>
   </div>

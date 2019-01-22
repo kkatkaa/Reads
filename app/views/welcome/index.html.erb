@@ -15,18 +15,16 @@
       <table class='table table-hover'>
         <thead>
           <tr>
-            <th></th>
-            <th>Top rated books</th>
+            <th>Most popular and top rated books</th>
             <th>Rating</th>
           </tr>
         </thead>
 
         <tbody>
-          <% @books.each.with_index(1) do |book, index| %>
+          <% @books.each do |book| %>
           <tr>
             <% if book.comments_count > 2 %>
-              <td><%= index %></td>
-              <td><i><%= link_to book.title, book_path(book), class: "btn btn-outline-dark" %></i></td>
+              <td><i><%= link_to book.title, book_path(book), class: "btn btn-dark" %></i></td>
               <td>
               <% if book.average_ranking.nil? %>
                 <%= link_to 'Be the first to rate', book_path(book) %>
