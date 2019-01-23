@@ -26,3 +26,9 @@
 window.addEventListener('load', function () {
     $('#book_author_ids').select2();
 });
+
+$(function () {
+  $('.popover').popover({
+    container: 'body'
+  })
+})
