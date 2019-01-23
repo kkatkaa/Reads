@@ -3,8 +3,12 @@
     <div class="column-1">
       <h1>Meet your next favorite book.</h1>
       <hr />
-      <h2 class="lead">Deciding what to read next?</h2>
-        <%= link_to 'Books', controller: "books" %>
+      <h2 class="lead">The most popular books:</h2>
+        <% @books.limit(5).each do |book| %>
+          <% if book.views_count > 5 %>
+            <%= link_to book.title, book_path(book), class: "btn btn-outline-dark" %>
+          <% end %>
+          <% end %>
       <hr />
       <h2 class="lead">Find your favorite author:</h2>
         <%= link_to 'Authors', controller: "authors" %>
