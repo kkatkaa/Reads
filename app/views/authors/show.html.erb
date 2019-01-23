@@ -31,4 +31,5 @@
     <p><%= link_to 'Remove author', author_path(@author), method: :delete, data: { confirm: 'Are you sure?' } %></td>
     <p><%= link_to 'Add another author', new_author_path(@author) %></p>
   </div>
+  <h3>Views: <%= pluralize(@author.views_count, 'time') %></h3>
 </div>

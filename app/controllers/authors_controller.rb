@@ -8,6 +8,7 @@ class AuthorsController < ApplicationController
   end
 
   def show
+    @author.increment!(:views_count)
   end
 
   def new

@@ -8,10 +8,14 @@
           <% if book.views_count > 5 %>
             <%= link_to book.title, book_path(book), class: "btn btn-outline-dark" %>
           <% end %>
-          <% end %>
+        <% end %>
       <hr />
-      <h2 class="lead">Find your favorite author:</h2>
-        <%= link_to 'Authors', controller: "authors" %>
+      <h2 class="lead">The most popular authors:</h2>
+      <% @authors.limit(5).each do |author| %>
+        <% if author.views_count > 5 %>
+          <%= link_to author.name, author_path(author), class: "btn btn-outline-dark" %>
+        <% end %>
+      <% end %>
       <hr />
     </div>
     <div class="column-2">
@@ -19,7 +23,7 @@
       <table class='table table-hover'>
         <thead>
           <tr>
-            <th>Most popular and top rated books</th>
+            <th>Top rated books</th>
             <th>Rating</th>
           </tr>
         </thead>
