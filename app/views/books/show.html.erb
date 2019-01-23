@@ -57,7 +57,6 @@
          <%= link_to 'Add to favorite', book_favorites_path(@book), method: :post, class: "btn btn-dark" %>
       <% end %>
     <% end %>
-
   <hr />
   <div>
     <p><%= link_to 'All Books', books_path %> </p>
@@ -67,4 +66,5 @@
       <p><%= link_to 'Add another book', new_book_path(@book) %></p>
     <% end %>
   </div>
+    <h3>Views: <%= pluralize(@book.views_count, 'time') %></h3>
 </div>

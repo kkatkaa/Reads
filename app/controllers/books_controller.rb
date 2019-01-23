@@ -19,6 +19,7 @@ class BooksController < ApplicationController
   def show
     @favorite = Favorite.find_or_initialize_by(book: @book, user: current_user)
     @comment = Comment.new
+    @book.increment!(:views_count)
   end
 
   def new
