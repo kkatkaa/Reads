@@ -1,7 +1,7 @@
 class AuthorsController < ApplicationController
   before_action :find_author, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, only: [:new, :edit, :create, :update, :destroy]
-  before_action :authorize_author, only: [:edit, :update, :destroy]
+  before_action :authorize_author, only: [:create, :new, :edit, :update, :destroy]
 
   def index
     @authors = Author.order('name asc').page(params[:page]).per(5)
@@ -48,7 +48,7 @@ class AuthorsController < ApplicationController
   private
 
   def authorize_author
-    if current_user != @author.user && !current_user&.admin?
+    if !current_user&.admin?
       flash[:alert] = "You are not allowed to be here"
       redirect_to authors_path
       false
