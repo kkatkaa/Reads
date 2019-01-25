@@ -7,6 +7,10 @@ class Author < ApplicationRecord
   has_many :books, through: :authors_books
   belongs_to :user
 
-  has_attached_file :image, styles: { medium: "300x300>", thumb: "100x100>" }
-  validates_attachment_content_type :image, content_type: /\Aimage\/.*\z/
+  #Paperclip 
+  # has_attached_file :image, styles: { medium: "300x300>", thumb: "100x100>" }
+  # validates_attachment_content_type :image, content_type: /\Aimage\/.*\z/
+
+  #CarrierWave
+  mount_uploader :image, ImageUploader
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_23_214447) do
+ActiveRecord::Schema.define(version: 2019_01_25_211823) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(version: 2019_01_23_214447) do
     t.integer "image_file_size"
     t.datetime "image_updated_at"
     t.integer "views_count", default: 0
+    t.string "image"
     t.index ["user_id"], name: "index_authors_on_user_id"
   end
 
@@ -55,6 +56,7 @@ ActiveRecord::Schema.define(version: 2019_01_23_214447) do
     t.decimal "average_ranking"
     t.integer "comments_count", default: 0
     t.integer "views_count", default: 0
+    t.string "image"
     t.index ["user_id"], name: "index_books_on_user_id"
   end
 

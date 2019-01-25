@@ -3,7 +3,8 @@
     <div class="container-fluid">
       <h2 class="display-4">
         <p style="display: inline"><%= @book.title %></p>
-        <p style="display: inline"> <%= image_tag @book.image.url(:medium) %></p>
+        <p style="display: inline"> <%= image_tag(@book.image.url, alt: 'Image') if @book.image %></p>
+
       </h2>
 
       <hr class="my-4">

@@ -10,11 +10,15 @@ class Book < ApplicationRecord
   has_many :authors, through: :authors_books
   has_many :comments, dependent: :destroy
   has_many :favorites
-  has_many :users, through: :favorites   
+  has_many :users, through: :favorites
   belongs_to :user
 
-  has_attached_file :image, styles: { medium: "300x300>", thumb: "100x100>" }
-  validates_attachment_content_type :image, content_type: /\Aimage\/.*\z/
+  #Paperclip
+  # has_attached_file :image, styles: { medium: "300x300>", thumb: "100x100>" }
+  # validates_attachment_content_type :image, content_type: /\Aimage\/.*\z/
+
+  #CarrierWave
+  mount_uploader :image, ImageUploader
 
   def tags=(value)
     value = sanitize_tags(value) if value.is_a?(String)
