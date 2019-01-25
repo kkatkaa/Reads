@@ -1,70 +1,66 @@
-<h1>GreatReads</h1>
-<div class="jumbotron jumbotron-fluid">
-  <div class="container">
-    <h2 class="display-4">
-      <p style="display: inline"><%= @book.title %></p>
-      <p style="display: inline"> <%= image_tag @book.image.url(:medium) %></p>
-    </h2>
-    <hr class="my-4">
-      <strong>by</strong>
-      <% @book.authors.each do |author| %>
-        <%= link_to author.name, author_path(author) %>
-      <% end %>
-    <hr />
-  </div>
+<div class="container">
+  <div class="jumbotron jumbotron-fluid">
+    <div class="container-fluid">
+      <h2 class="display-4">
+        <p style="display: inline"><%= @book.title %></p>
+        <p style="display: inline"> <%= image_tag @book.image.url(:medium) %></p>
+      </h2>
 
-  <div class="container-fluid">
-      <p>Rating:
+      <hr class="my-4">
+        <strong>by</strong>
+        <% @book.authors.each do |author| %>
+          <%= link_to author.name, author_path(author) %>
+        <% end %>
+      <hr />
+
+      <p><strong>Rating:</strong>
         <% if @book.average_ranking.nil? %>
           0
         <% elsif %>
           <%= @book.average_ranking %>
         <% end %>
       </p>
-      <p><%= @book.description %></p>
-      <p>Pages: <%= @book.pages %></p>
-      <p>Published: <%= @book.date %></p>
-      <p>ISBN: <%= @book.isbn %></p>
-      <p>Edition language: <%= @book.language %></p>
-  </div>
+      <p><i><%= @book.description %></i></p>
+      <p><strong>Pages:</strong> <%= @book.pages %></p>
+      <p><strong>Published:</strong> <%= @book.date %></p>
+      <p><strong>ISBN:</strong> <%= @book.isbn %></p>
+      <p><strong>Edition language:</strong> <%= @book.language %></p>
 
-  <div class="container-fluid">
-    <strong> Tags:</strong>
-    <% @book.tags.each do |t| %>
-      <%=link_to t, books_path(q: t), class: "badge badge-dark" %>
-    <% end %>
-  </div>
+      <p><strong> Tags:</strong>
+        <% @book.tags.each do |t| %>
+          <%=link_to t, books_path(q: t), class: "badge badge-dark" %>
+        <% end %>
+      </p>
+      <hr />
+    </div>
 
-  <div class="container-fluid">
-    <p>Created by: <%= @book.user.email %></p>
-  </div>
-  <hr />
+    <div class="container-fluid">
+    <h2 class="display-4">Comments: <%= @book.comments_count %></h2>
+      <%= render @book.comments %>
+        <% if current_user %>
+          <%=render 'comments/form' %>
+        <%end%>
+    </div>
 
-  <div class="container-fluid">
-  <h2 class="display-4">Comments: <%= @book.comments_count %></h2>
-    <%= render @book.comments %>
-      <% if current_user %>
-        <%=render 'comments/form' %>
-      <%end%>
-  </div>
-
-  <hr />
-    <%= pluralize(@book.favorites.count, 'person') %> liked this book
-     <% if current_user %>
-       <% if @favorite.persisted? %>
-         <%= link_to 'Remove from favorites', book_favorite_path(@book, @favorite), method: :delete, class: "btn btn-dark" %>
-       <% else %>
-         <%= link_to 'Add to favorite', book_favorites_path(@book), method: :post, class: "btn btn-dark" %>
+    <div class="container-fluid">
+      <hr />
+      <%= pluralize(@book.favorites.count, 'person') %> liked this book
+       <% if current_user %>
+         <% if @favorite.persisted? %>
+           <%= link_to 'Remove from favorites', book_favorite_path(@book, @favorite), method: :delete, class: "btn btn-dark" %>
+         <% else %>
+           <%= link_to 'Add to favorites', book_favorites_path(@book), method: :post, class: "btn btn-dark" %>
+        <% end %>
       <% end %>
-    <% end %>
-  <hr />
-  <div>
+    </div>
+  </div>
+
     <p><%= link_to 'All Books', books_path %> </p>
     <% if current_user&.admin? %>
       <p><%= link_to 'Edit this book', edit_book_path(@book) %></p>
       <p><%= link_to 'Remove this book', book_path(@book), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       <p><%= link_to 'Add another book', new_book_path(@book) %></p>
     <% end %>
-  </div>
-    <h3>Views: <%= pluralize(@book.views_count, 'time') %></h3>
+
+  <h3>Views: <%= pluralize(@book.views_count, 'time') %></h3>
 </div>

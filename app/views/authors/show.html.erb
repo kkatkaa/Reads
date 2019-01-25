@@ -1,35 +1,29 @@
-<h1>GreatReads</h1>
-<div class="jumbotron jumbotron-fluid">
-  <div class="container">
+<div class="container">
+  <div class="jumbotron jumbotron-fluid">
+    <div class="container-fluid">
+      <h2 class="display-4">
+        <p style="display: inline"><%= @author.name %></p>
+        <p style="display: inline"><%= image_tag @author.image.url(:thumb) %></p>
+      </h2>
 
-    <h2 class="display-4">
-      <p style="display: inline"><%= @author.name %></p>
-      <p style="display: inline"><%= image_tag @author.image.url(:thumb) %></p>
-    </h2>
+      <hr class="my-4">
+        <p><strong>Born</strong> <%= @author.born %></p>
+        <p><i><%= @author.description %></i></p>
+      <hr />
 
-    <hr class="my-4">
-    <p>Born <%= @author.born %></p>
-    <p><%= @author.description %></p>
-    <hr />
+      <h2><strong><%= @author.name %>'s books</strong></h2></br>
+      <% @author.books.each do |book| %>
+        <%= link_to book.title, book_path(book), class: "btn btn-outline-dark" %>
+      <% end %>
+    </div>
   </div>
 
-  <div class="container-fluid">
-    <strong><%= @author.name %>'s books</strong></br>
-    <% @author.books.each do |book| %>
-      <%= link_to book.title, book_path(book) %>
-    <% end %>
-  </div>
-
-  <div class="container-fluid">
-    <p>Created by: <%= @author.user.email %></p>
-  </div>
-
-    <hr />
-  <div class="container-fluid">
     <p><%= link_to 'All Authors', authors_path %> </p>
-    <p><%= link_to 'Edit author', edit_author_path(@author) %></p>
-    <p><%= link_to 'Remove author', author_path(@author), method: :delete, data: { confirm: 'Are you sure?' } %></td>
-    <p><%= link_to 'Add another author', new_author_path(@author) %></p>
-  </div>
+    <% if current_user&.admin? %>
+      <p><%= link_to 'Edit author', edit_author_path(@author) %></p>
+      <p><%= link_to 'Remove author', author_path(@author), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <p><%= link_to 'Add another author', new_author_path(@author) %></p>
+    <% end %>
+
   <h3>Views: <%= pluralize(@author.views_count, 'time') %></h3>
 </div>

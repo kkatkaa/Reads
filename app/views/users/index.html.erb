@@ -1,10 +1,10 @@
 <div class="container">
   <div class="row justify-content-around">
-    <div class="column-1">
-      <% if user_signed_in? %>
+    <% if user_signed_in? %>
+      <div class="column-1">
         <h3> <%= current_user.email %>!<h3>
          <% if current_user.avatar.url.present? %>
-            <%= image_tag(current_user.avatar.url, class: "profile-image img-circle") %>
+            <%= image_tag(current_user.avatar.url, class: "profile-image img-circle") %></br>
             <%= link_to 'Edit profile', edit_user_registration_path(@user), class: "btn btn-dark" %>
             <%= link_to 'Log out', destroy_user_session_path, class: "btn btn-dark", method: :delete %>
          <% end %>
@@ -12,33 +12,28 @@
 
      <div class="column-2">
       <h3>Your favorite books:</h3>
-        <div class="column-2">
-          <h2 class="lead"></h2>
-          <table class='table table-hover'>
-            <thead>
-              <tr>
-                <th></th>
-                <th>Title</th>
-              </tr>
-            </thead>
-            <tbody>
-            <% current_user.favorites.each.with_index(1) do |favorite, index| %>
-              <tr>
-                <td><%= index %></td>
-                <td><%= link_to favorite.book.title, favorite.book, class: "btn btn-dark" %></td>
-              </tr>
-            <% end %>
-          </tbody>
-          </table>
-        </div>
+        <table class='table table-hover'>
+          <thead>
+            <tr>
+              <th></th>
+              <th>Title</th>
+            </tr>
+          </thead>
+          <tbody>
+          <% current_user.favorites.each.with_index(1) do |favorite, index| %>
+            <tr>
+              <td><%= index %></td>
+              <td><%= link_to favorite.book.title, favorite.book, class: "btn btn-dark" %></td>
+            </tr>
+          <% end %>
+        </tbody>
+        </table>
       </div>
-    </div>
-   <% else %>
-      <p>
-       <h5>To see your favorite books...</h5>
-         <a class="dropdown-item"> <%= link_to 'Sign in', new_user_session_path, class: "btn btn-dark" %></a>
-       <h5>...or create a free account</h5>
-         <a class="dropdown-item" > <%= link_to 'Sign up', new_user_registration_path, class: "btn btn-dark"%></a>
-     </div>
-  <% end %>
+    <% else %>
+     <h5>To see your favorite books...</h5>
+       <p class="dropdown-item"> <%= link_to 'Sign in', new_user_session_path, class: "btn btn-dark" %></p>
+     <h5>...or create a free account</h5>
+       <p class="dropdown-item" > <%= link_to 'Sign up', new_user_registration_path, class: "btn btn-dark"%></p>
+    <% end %>
+  </div>
 </div>
