@@ -64,8 +64,11 @@ $colHighlight   : #161514;
 
 .row {
     background: url(books.png);
-    ;
     background-size: cover;
+}
+.column {
+  float: left;
+  width: 50%;
 }
 
 .quote {
