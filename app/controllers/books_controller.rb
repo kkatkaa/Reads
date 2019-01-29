@@ -8,7 +8,7 @@ class BooksController < ApplicationController
   # end
   def index
     if params[:q]
-      @books = Book.where('title LIKE ? or ? = any(tags)', "%#{params[:q]}%", params[:q]).page(params[:page]).per(5)
+      @books = Book.where('LOWER(title) ILIKE ? or ? = any(tags)', "%#{params[:q]}%", params[:q]).page(params[:page]).per(5)
     else
        @books = Book.order('title asc').page(params[:page]).per(5)
     end
