@@ -8,13 +8,13 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link"><%=  link_to 'Books', books_path, class: "btn btn-dark" %><span class="sr-only"></span></a>
+        <a class="nav-link"><%=  link_to 'Books', books_path, class: "btn btn-dark btn-sm" %><span class="sr-only"></span></a>
       </li>
       <li class="nav-item active">
-        <a class="nav-link"><%= link_to 'Authors', authors_path, class: "btn btn-dark" %><span class="sr-only"></span></a>
+        <a class="nav-link"><%= link_to 'Authors', authors_path, class: "btn btn-dark btn-sm" %><span class="sr-only"></span></a>
       </li>
       <li class="nav-item active">
-        <a class="nav-link"><%= link_to 'My books', users_index_path, class: "btn btn-dark" %><span class="sr-only"></span></a>
+        <a class="nav-link"><%= link_to 'My books', users_index_path, class: "btn btn-dark btn-sm" %><span class="sr-only"></span></a>
       </li>
     </ul>
   </div>
@@ -33,12 +33,12 @@
        <% else %>
          <p>Sign in or create a free account</p>
          <div class="nav-item dropdown">
-           <a class="nav-link dropdown-toggle btn btn-dark" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+           <a class="nav-link dropdown-toggle btn btn-dark btn sm" href="Log in" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
              Log in
            </a>
            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-             <a class="dropdown-item"> <%= link_to 'Sign in', new_user_session_path, class: "btn btn-dark" %><br></a>
-             <a class="dropdown-item" > <%= link_to 'Sign up', new_user_registration_path, class: "btn btn-dark"%></a>
+             <a class="dropdown-item"> <%= link_to 'Sign in', new_user_session_path, class: "btn btn-dark btn-sm" %><br></a>
+             <a class="dropdown-item" > <%= link_to 'Sign up', new_user_registration_path, class: "btn btn-dark btn-sm"%></a>
            </div>
         </div>
       <% end %>

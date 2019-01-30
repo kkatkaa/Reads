@@ -29,6 +29,7 @@ $colDefault     : #ecf0f1;
 $colHighlight   : #161514;
 
 .navbar {
+  display: flex;
   background-color: $bgDefault;
   .navbar-brand {
     color: $colDefault;
