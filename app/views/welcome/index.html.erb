@@ -6,14 +6,14 @@
       <h2 class="lead">The most popular books:</h2>
         <% @books.limit(5).each do |book| %>
           <% if book.views_count > 5 %>
-            <%= link_to book.title, book_path(book), class: "btn btn-outline-dark" %>
+             <%=link_to (image_tag(book.image.url, style:"width:15%;")), book_path(book) %>
           <% end %>
         <% end %>
       <hr />
       <h2 class="lead">The most popular authors:</h2>
       <% @authors.limit(5).each do |author| %>
         <% if author.views_count > 5 %>
-          <%= link_to author.name, author_path(author), class: "btn btn-outline-dark" %>
+        <%=link_to (image_tag(author.image.url, style:"width:15%;")), author_path(author) %>
         <% end %>
       <% end %>
       <hr />
