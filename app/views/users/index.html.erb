@@ -3,11 +3,12 @@
     <% if user_signed_in? %>
       <div class="column-1">
         <h3> <%= current_user.email %>!<h3>
-         <% if current_user.avatar.url.present? %>
-            <%= image_tag(current_user.avatar.url, class: "profile-image img-circle") %></br>
-            <%= link_to 'Edit profile', edit_user_registration_path(@user), class: "btn btn-dark" %>
-            <%= link_to 'Log out', destroy_user_session_path, class: "btn btn-dark", method: :delete %>
+        <% if current_user.avatar.url.present? %>
+          <%= image_tag(current_user.avatar.url, class: "profile-image img-circle") %></br>
          <% end %>
+        <%= link_to 'Edit profile', edit_user_registration_path(@user), class: "btn btn-dark" %>
+        <%= link_to 'Log out', destroy_user_session_path, class: "btn btn-dark", method: :delete %>
+
      </div>
 
      <div class="column-2">
